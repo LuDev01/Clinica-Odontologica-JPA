@@ -21,8 +21,8 @@ if(pacienteId)
 }
 
     const formulario = document.querySelector('#add_new_paciente');
-    prevent.eventByDefault();
     formulario.addEventListener('submit', async function (event) {
+        event.preventDefault();
             let formData = {
                 nombre: document.querySelector('#nombre').value,
                 apellido: document.querySelector('#apellido').value,
