@@ -23,9 +23,11 @@
       return await fetch(url,settings).then(response =>
       {
       try {
-         console.log({response})
+
+
+
         // const res= JSON.parse(response.body)
-        const res= response.json()
+        const res = method==="DELETE" ? response.text() :  response.json()
          return res;
       }catch (e){
          console.log("Error!", e)

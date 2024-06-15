@@ -66,18 +66,18 @@ if(pacienteId)
                              //document.querySelector('#response').innerHTML = successAlert;
                              //document.querySelector('#response').style.display = "block";
                              //resetUploadForm();
-                             // window.location.href = "http://localhost:8080/get_pacientes.html";
+                              window.location.href = "http://localhost:8080/get_pacientes.html";
 
                         })
                         .catch(error => {
-                                let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
-                                                 '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                                                 '<strong> Error intente nuevamente</strong> </div>'
+//                                let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
+//                                                 '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+//                                                 '<strong> Error intente nuevamente</strong> </div>'
 
                                  console.log("Error!", e.message)
-                                 document.querySelector('#response').style.display = "block";
+//                                 document.querySelector('#response').style.display = "block";
                                 // resetUploadForm();
-                                 //window.location.href = "http://localhost:8080/get_pacientes.html";
+                                 window.location.href = "http://localhost:8080/get_pacientes.html";
 
                                  })
     }

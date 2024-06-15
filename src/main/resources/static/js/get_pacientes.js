@@ -2,7 +2,7 @@ function findBy (id){
     window.location.href = `http://localhost:8080/post_pacientes.html?id=${id}`
 }
 async function deleteById (id){
-     const data=await apiCall(`/pacientes/${id}`,'DELETE',formData)
+     const data=await apiCall(`/pacientes/${id}`,'DELETE')
      loadPage();
 }
 function loadPage() {
