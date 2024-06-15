@@ -1,0 +1,50 @@
+package com.example.Clinica_Odontologica_JPA.entity;
+
+
+import jakarta.persistence.*;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDate;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "Pacientes")
+public class Paciente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
+    private String nombre;
+
+    @Column
+    private String apellido;
+
+    @Column
+    private String cedula;
+
+    @Column
+    private LocalDate fechaIngreso;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "domicilio_id", referencedColumnName = "id")
+    private Domicilio domicilio;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", cedula='" + cedula + '\'' +
+                ", fechaIngreso=" + fechaIngreso +
+                ", domicilio=" + domicilio +
+                '}';
+    }
+}
