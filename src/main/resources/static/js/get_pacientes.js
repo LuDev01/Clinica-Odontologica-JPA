@@ -5,6 +5,10 @@ async function deleteById (id){
      const data=await apiCall(`/pacientes/${id}`,'DELETE')
      loadPage();
 }
+function formCrearPaciente(){
+     window.location.href = `http://localhost:8080/post_pacientes.html`
+}
+
 function loadPage() {
           const url = '/pacientes';
           const settings = {
@@ -17,7 +21,7 @@ function loadPage() {
                 var table = document.getElementById("pacienteTableBody");
                 table.innerHTML = "";
              for(paciente of data){
-                var pacienteRow =table.insertRow();
+                        var pacienteRow =table.insertRow();
                 let tr_id = 'tr_' + paciente.id;
                 pacienteRow.id = tr_id;
 
@@ -44,7 +48,6 @@ function loadPage() {
                         '<td>' + deleteButton + '</td>';
 
             };
-
         })
 }
 window.addEventListener('load', function () {

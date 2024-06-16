@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Listado</title>
+  <title>Turnos</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="/js/common.js"></script>
-  <script type="text/javascript" src="/js/get_odontologos.js"></script>
-
+  <script type="text/javascript" src="/js/get_turnos.js"></script>
 </head>
+
 <body style="background:#212529">
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -25,71 +24,86 @@
         <li class="nav-item">
           <a class="nav-link " style="color:#15a4c0" aria-current="page" href="get_pacientes.html">Pacientes</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" style="color: #590bd7" href="get_odontologos.html">Odontologos</a>
+        <li class="nav-item ">
+          <a class="nav-link" style="color: #15a4c0" href="get_odontologos.html">Odontologos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: #15a4c0" href="get_turnos.html">Turnos</a>
+        <li class="nav-item active">
+          <a class="nav-link" style="color: #590bd7" href="get_turnos.html">Turnos</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 <div class="container mt-3 mb-3">
-  <div id="div_odontologo_table">
-    <h1 style="color:white">Lista de Odontologos
-      <button type="button" onclick="modalCrearOdontologo()" class="btn btn-outline-info"  data-toggle="modal" data-target="#exampleModal">Crear</button>
+  <div id="div_turnos_table">
+    <h1 style="color:white">Lista de Turnos
+      <button type="button" onclick="modalCrearTurno()" class="btn btn-outline-info"  data-toggle="modal" data-target="#crearModal">Crear</button>
     </h1>
     <div class="row col-md-6 table-responsive">
-      <table  class="table table-dark table-striped">
+      <table id="turnoTable" class="table table-dark table-striped">
         <thead>
         <tr>
           <th>Id</th>
-          <th>Matricula</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
+          <th>Paciente</th>
+          <th>Odontologo</th>
+          <th>Fecha</th>
           <th></th>
           <th></th>
         </tr>
         </thead>
-        <tbody id="odontologoTableBody">
-
+        <tbody id="turnosTableBody">
         </tbody>
       </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6" style="display: none;
-											background-color:#e6fffa; padding:10px; border-radius:3px"
-         id="div_pelicula_updating">
-      <form id="update_pelicula_form">
-        <div class="form-group">
-          <label >Id:</label>
-          <input type="text" class="form-control" id="pelicula_id" readonly>
-        </div>
-        <div class="form-group">
-          <label >Titulo:</label>
-          <input type="text" class="form-control" placeholder="titulo" id="titulo">
-        </div>
-        <div class="form-group">
-          <label >Categoria:</label>
-          <input type="text" class="form-control" placeholder="categoria" id="categoria">
-        </div>
-        <div class="form-group">
-          <label >Cant. premios:</label>
-          <input type="text" class="form-control" placeholder="premios" id="premios">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Modificar</button>
-      </form>
-      <div id="response" style="display:none; margin:10px">
-      </div>
     </div>
   </div>
   <hr>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="row">
+  <div class="col-sm-6" style="display: none;
+											background-color:#e6fffa; padding:10px; border-radius:3px"
+       id="div_pelicula_updating">
+    <form id="update_pelicula_form">
+      <div class="form-group">
+        <label >Id:</label>
+        <input type="text" class="form-control" id="pelicula_id" readonly>
+      </div>
+      <div class="form-group">
+        <label >Titulo:</label>
+        <input type="text" class="form-control" placeholder="titulo" id="titulo">
+      </div>
+      <div class="form-group">
+        <label >Categoria:</label>
+        <input type="text" class="form-control" placeholder="categoria" id="categoria">
+      </div>
+      <div class="form-group">
+        <label >Cant. premios:</label>
+        <input type="text" class="form-control" placeholder="premios" id="premios">
+      </div>
+      <button type="submit" class="btn btn-primary">Modificar</button>
+    </form>
+    <div id="response" style="display:none; margin:10px">
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="detallesModal" tabindex="-1" aria-labelledby="detallesModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalTitle">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="crearModal" tabindex="-1" role="dialog" aria-labelledby="crearModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" style="display:flex; justify-content:space-between">

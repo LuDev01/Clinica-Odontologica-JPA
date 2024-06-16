@@ -1,5 +1,4 @@
 window.addEventListener('load', async function () {
-
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const pacienteId = urlParams.get('id');
