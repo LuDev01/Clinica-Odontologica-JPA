@@ -89,15 +89,18 @@
 <div class="modal fade" id="detallesModal" tabindex="-1" aria-labelledby="detallesModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="display:flex; justify-content:space-between">
         <h1 class="modal-title fs-5" id="modalTitle">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       <!-- <button type="button" class="btn-close" data-bs-dismiss="detallesModal" aria-label="Close"></button> -->
+        <button type="button" class="btn btn-danger btn_delete" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="modal-body" id="modalBody">
-        ...
+      <div class="modal-body" id="modalDetailsBody">
+        Holis
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger btn_delete" data-dismiss="modal" aria-label="Close">Close</button>
       </div>
     </div>
   </div>
@@ -107,29 +110,37 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" style="display:flex; justify-content:space-between">
-        <h5 class="modal-title" id="exampleModalLabel">Actualizar odontologo</h5>
-        <button type="button" class="btn btn-danger btn_delete" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="exampleModalLabel">Crear turno</h5>
+        <button type="button" class="btn btn-secondary btn_delete" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form id="formulario">
           <div class="form-group" id="idGroup">
-            <label for="odontologoId" class="col-form-label">ID Odontologo:</label>
+            <label for="odontologoId" class="col-form-label">ID Turno:</label>
             <input type="text" class="form-control" id="odontologoId" disabled>
           </div>
           <div class="form-group">
-            <label for="numeroMatricula" class="col-form-label">Numero de Matricula:</label>
-            <input type="text" class="form-control" id="numeroMatricula">
+            <label for="pacienteModal" class="col-form-label">Paciente:</label>
+            <select id="pacienteModal" class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
           </div>
+
           <div class="form-group">
-            <label for="nombre" class="col-form-label">Nombre:</label>
-            <input type="text" class="form-control" id="nombre">
+            <label for="odontologoModal" class="col-form-label">Odontologo:</label>
+            <select id="odontologoModal" class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
           </div>
-          <div class="form-group">
-            <label for="apellido" class="col-form-label">Apellido:</label>
-            <input type="text" class="form-control" id="apellido">
-          </div>
+
         </form>
       </div>
       <div class="modal-footer"></div>

@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "Turnos")
 public class Turno {
@@ -41,6 +40,11 @@ public class Turno {
                 ", odontologo=" + odontologo +
                 ", fecha=" + fecha +
                 '}';
+    }
+
+
+
+    public Turno() {
     }
 
     public Long getId() {

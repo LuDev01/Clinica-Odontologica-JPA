@@ -23,4 +23,13 @@ public class Odontologo {
     @Column
     private String apellido;
 
+
+    public Odontologo(Integer numeroMatricula, String nombre, String apellido) {
+        this.numeroMatricula = numeroMatricula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
+    public Odontologo() {
+    }
 }
