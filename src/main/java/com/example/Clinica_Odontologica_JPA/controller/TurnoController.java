@@ -56,16 +56,22 @@ public class TurnoController {
         return  ResponseEntity.ok(turnoService.crearTurno(turno1));
     }
 
-    @PutMapping
-    public ResponseEntity<Turno>actualizarTurno(@RequestBody Turno turno) throws Exception {
+    @PutMapping("/{id}")
+    public ResponseEntity<Turno>actualizarTurno(@PathVariable Long id, @RequestBody TurnoDTO turnoDTO) throws Exception {
 
-        Optional<Turno> turno1 = turnoService.buscarPorId(turno.getId());
+        Optional<Turno> turno1 = turnoService.buscarPorId(id);
+        Optional<Paciente> paciente =pacienteService.buscarPorId(turnoDTO.getPacienteId());
+        Optional<Odontologo> odontologo = odontologoService.buscarPorId(turnoDTO.getOdontologoId());
 
-        if (turno1.isPresent()) {
+        if (!turno1.isPresent() || !paciente.isPresent() || !odontologo.isPresent()){
+            throw new ResourceNotFoundException("Datos no coinciden!");
+        }
+        Turno turno = turno1.get();
+        turno.setPaciente(paciente.get());
+        turno.setOdontologo(odontologo.get());
+        turno.setFecha(turnoDTO.getFecha());
             turnoService.actualizarTurno(turno);
             return ResponseEntity.ok(turno);
-        }
-        throw new ResourceNotFoundException("Turno no encontrado");
     }
 
     @DeleteMapping("/{id}")

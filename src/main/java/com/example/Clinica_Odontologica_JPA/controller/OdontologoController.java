@@ -36,8 +36,9 @@ public class OdontologoController {
     public ResponseEntity<Odontologo>actualizarOdontologo(@RequestBody Odontologo odontologo) throws Exception{
         Optional<Odontologo> odontologo1 = odontologoService.buscarPorId(odontologo.getId());
         if(odontologo1.isPresent()){
+            odontologoService.actualizarOdontologo(odontologo);
             return ResponseEntity.ok(odontologo);
-                    //odontologoService.actualizarOdontologo(odontologo);
+
         }
         throw new ResourceNotFoundException("Odontologo no encontrado!!");
 
@@ -47,6 +48,7 @@ public class OdontologoController {
     public ResponseEntity<String> eliminarOdontologo(@PathVariable Long id) throws Exception {
      Optional<Odontologo> odontologo = odontologoService.buscarPorId(id);
      if (odontologo.isPresent()){
+         odontologoService.eliminarOdontologo(id);
          return ResponseEntity.ok("odontologo eliminado correctamente!");
      }
         throw new ResourceNotFoundException("Odontologo no encontrado");

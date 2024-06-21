@@ -32,6 +32,7 @@ public class Turno {
     @Column
     private LocalDate fecha;
 
+
     @Override
     public String toString() {
         return "Turno{" +

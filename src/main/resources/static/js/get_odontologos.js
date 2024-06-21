@@ -58,6 +58,7 @@
             nombre:document.querySelector('#nombre').value,
             apellido:document.querySelector('#apellido').value
         }
+        console.log("cambiesitos: ",body)
         const data= await apiCall(`/odontologos`,'PUT',body)
         cargarListaOdontologos();
   }

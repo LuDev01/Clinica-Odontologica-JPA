@@ -118,8 +118,8 @@
       <div class="modal-body">
         <form id="formulario">
           <div class="form-group" id="idGroup">
-            <label for="odontologoId" class="col-form-label">ID Turno:</label>
-            <input type="text" class="form-control" id="odontologoId" disabled>
+            <label for="turnoId" class="col-form-label">ID Turno:</label>
+            <input type="text" class="form-control" id="turnoId" disabled>
           </div>
           <div class="form-group">
             <label for="pacienteModal" class="col-form-label">Paciente:</label>
@@ -140,10 +140,15 @@
               <option value="3">Three</option>
             </select>
           </div>
-
+          <div class="form-group">
+            <label for="fechaModal" class="col-form-label">Fecha:</label>
+            <input type="date" class="form-control" id="fechaModal">
+          </div>
         </form>
       </div>
-      <div class="modal-footer"></div>
+      <div class="modal-footer" id="modalCrearFooter">
+
+      </div>
     </div>
   </div>
 </div>
