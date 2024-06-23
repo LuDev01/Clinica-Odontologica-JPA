@@ -1,4 +1,4 @@
-package com.example.Clinica_Odontologica_JPA;
+package com.example.Clinica_Odontologica_JPA.integration;
 
 
 import com.example.Clinica_Odontologica_JPA.entity.Domicilio;
@@ -41,7 +41,7 @@ public class TurnosIntegracionTest {
         Turno turno= turnoService.crearTurno(new Turno(paciente,odontologo, LocalDate.of(2024,6,20)));
     }
     @Test
-    public void ListarTodosLosTurnosTest() throws Exception{
+    public void listarTodosLosTurnosTest() throws Exception{
         cargarDatos();
         MvcResult respuesta= mockMvc.perform(MockMvcRequestBuilders.get("/turnos").accept(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())

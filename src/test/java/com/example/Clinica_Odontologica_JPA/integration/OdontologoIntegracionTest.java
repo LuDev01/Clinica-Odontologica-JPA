@@ -1,10 +1,11 @@
-package com.example.Clinica_Odontologica_JPA.service;
+package com.example.Clinica_Odontologica_JPA.integration;
 
 
 import com.example.Clinica_Odontologica_JPA.entity.Domicilio;
 import com.example.Clinica_Odontologica_JPA.entity.Odontologo;
 import com.example.Clinica_Odontologica_JPA.entity.Paciente;
 import com.example.Clinica_Odontologica_JPA.entity.Turno;
+import com.example.Clinica_Odontologica_JPA.service.OdontologoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +37,9 @@ public class OdontologoIntegracionTest {
     public static final ObjectMapper JSON_MAPPER = new ObjectMapper();
 
     @Test
-    public void ListarTodosLosTurnosTest() throws Exception{
-       // cargarDatos();
+    public void crearOdontologoTest() throws Exception{
         Odontologo odontologo = new Odontologo(5898,"Moris","Toledo");
         String jsonString = JSON_MAPPER.writeValueAsString(odontologo);
-        System.out.println("Jsiton: "+ jsonString);
         MvcResult respuesta= mockMvc.perform(MockMvcRequestBuilders.post("/odontologos").contentType(MediaType.APPLICATION_JSON)
                 .content(jsonString))
                 .andDo(MockMvcResultHandlers.print())

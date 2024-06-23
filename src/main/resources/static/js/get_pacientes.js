@@ -42,7 +42,7 @@ function loadPage() {
                         '<td class=\"td_apellido\">' + paciente.apellido.toUpperCase() + '</td>' +
                         '<td class=\"td_cedula\">' + paciente.cedula.toUpperCase() + '</td>' +
                         '<td class=\"td_fechaIngreso\">' + paciente.fechaIngreso + '</td>' +
-                         '<td class=\"td_calle\">' + paciente.domicilio.calle.toUpperCase() + '</td>' +
+                        '<td class=\"td_calle\">' + paciente.domicilio.calle.toUpperCase() + ' ' + paciente.domicilio.numero + ', ' + paciente.domicilio.localidad.toUpperCase() + ' - ' + paciente.domicilio.provincia.toUpperCase() + '</td>' +
                         '<td class=\"td_email\">' + paciente.email.toUpperCase() + '</td>' +
                         '<td>' + updateButton + '</td>'+
                         '<td>' + deleteButton + '</td>';

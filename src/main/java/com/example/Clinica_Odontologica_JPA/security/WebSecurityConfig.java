@@ -40,10 +40,10 @@ public class WebSecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authz)-> authz
-                        //.requestMatchers("/index.html","/get_turnos.html")
-                        //.hasAnyRole("USER", "ADMIN")
-                      // .anyRequest().hasRole("ADMIN")
-                        .anyRequest().anonymous()
+                        .requestMatchers("/index.html","/get_turnos.html").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/get_pacientes.html","/post_pacientes.html", "/get_odontologos.html").hasRole("ADMIN")
+                        .anyRequest().authenticated()
+
                 )
                 .formLogin(withDefaults())
                 .logout(withDefaults());
