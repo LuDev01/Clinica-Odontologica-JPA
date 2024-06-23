@@ -1,10 +1,13 @@
-package com.example.Clinica_Odontologica_JPA.service;
+package com.example.Clinica_Odontologica_JPA;
 
 
 import com.example.Clinica_Odontologica_JPA.entity.Domicilio;
 import com.example.Clinica_Odontologica_JPA.entity.Odontologo;
 import com.example.Clinica_Odontologica_JPA.entity.Paciente;
 import com.example.Clinica_Odontologica_JPA.entity.Turno;
+import com.example.Clinica_Odontologica_JPA.service.OdontologoService;
+import com.example.Clinica_Odontologica_JPA.service.PacienteService;
+import com.example.Clinica_Odontologica_JPA.service.TurnoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
