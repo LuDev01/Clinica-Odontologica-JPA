@@ -23,8 +23,12 @@ public class PacienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Paciente>>buscarPorId(@PathVariable Long id){
-        return ResponseEntity.ok(pacienteService.buscarPorId(id));
+    public ResponseEntity<Optional<Paciente>>buscarPorId(@PathVariable Long id) throws Exception {
+        Optional<Paciente> paciente = pacienteService.buscarPorId(id);
+        if (paciente.isPresent()){
+            return ResponseEntity.ok(paciente);
+        }
+        throw new  ResourceNotFoundException("Paciente no encontrado");
     }
 
     @GetMapping("/buscar/{email}")

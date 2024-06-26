@@ -42,11 +42,12 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((authz)-> authz
                         .requestMatchers("/index.html","/get_turnos.html").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/get_pacientes.html","/post_pacientes.html", "/get_odontologos.html").hasRole("ADMIN")
+                        .requestMatchers("/403.html","/403.css", "/403,js").permitAll()
                         .anyRequest().authenticated()
-
                 )
                 .formLogin(withDefaults())
                 .logout(withDefaults());
+        http.exceptionHandling((exception)-> exception.accessDeniedPage("/403.html"));
         return http.build();
     }
 

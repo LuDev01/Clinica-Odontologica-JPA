@@ -35,8 +35,12 @@ public class TurnoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Turno>>buscarPorId(@PathVariable Long id){
-        return ResponseEntity.ok(turnoService.buscarPorId(id));
+    public ResponseEntity<Optional<Turno>>buscarPorId(@PathVariable Long id) throws Exception {
+        Optional<Turno> turno = turnoService.buscarPorId(id);
+        if (turno.isPresent()){
+            return ResponseEntity.ok(turno);
+        }
+        throw new ResourceNotFoundException("Turno no encontrado!!");
     }
 
     @PostMapping
@@ -63,9 +67,15 @@ public class TurnoController {
         Optional<Paciente> paciente =pacienteService.buscarPorId(turnoDTO.getPacienteId());
         Optional<Odontologo> odontologo = odontologoService.buscarPorId(turnoDTO.getOdontologoId());
 
-        if (!turno1.isPresent() || !paciente.isPresent() || !odontologo.isPresent()){
-            throw new ResourceNotFoundException("Datos no coinciden!");
+        if (!turno1.isPresent()){
+            throw new ResourceNotFoundException("Turno no encontrado!!");
         }
+
+        if (!paciente.isPresent() || !odontologo.isPresent()){
+            throw new BadRequestException("Datos inválidos");
+        }
+
+
         Turno turno = turno1.get();
         turno.setPaciente(paciente.get());
         turno.setOdontologo(odontologo.get());

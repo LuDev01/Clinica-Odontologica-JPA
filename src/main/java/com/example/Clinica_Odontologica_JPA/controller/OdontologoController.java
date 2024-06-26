@@ -18,13 +18,17 @@ public class OdontologoController {
     private OdontologoService odontologoService;
 
     @GetMapping
-    public ResponseEntity<List<Odontologo>> listarTodos(){
+    public ResponseEntity<List<Odontologo>> listarTodos() {
         return ResponseEntity.ok(odontologoService.listarTodos());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Odontologo>>buscarPorId(@PathVariable Long id){
-        return ResponseEntity.ok(odontologoService.buscarPorId(id));
+    public ResponseEntity<Optional<Odontologo>>buscarPorId(@PathVariable Long id) throws  Exception  {
+        Optional<Odontologo> odontologo = odontologoService.buscarPorId(id);
+        if (odontologo.isPresent()){
+            return ResponseEntity.ok(odontologo);
+        }
+        throw new ResourceNotFoundException("Odontologo no encontrado!!");
     }
 
     @PostMapping
